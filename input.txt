@@ -1,0 +1,28 @@
+.STACK = 512
+
+.DATA
+BYTE var1 = 10
+WORD var2 = 20
+BYTE var3 = 8
+
+.CODE
+Func start:
+	MOVI R20 var1
+	MOVI R25 var2
+	CMP R20 R25
+	JNE Label:
+		ADD R20 R25
+		MUL R25 R20
+	Label:
+		CALL continue:
+EndF
+
+Func continue:
+	MOVI R30 var3
+	ADD R30 R20
+EndF
+
+.MAIN = start 
+
+
+
